@@ -20,10 +20,12 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
+                //.apis(RequestHandlerSelectors.any())              
+                //.paths(PathSelectors.any())                    
                 .apis(RequestHandlerSelectors.basePackage("demo.oauth2.resource.api"))
-                //.apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.any())
                 //.paths(PathSelectors.any())
-                .paths(PathSelectors.ant("/api/**"))
+                //.paths(PathSelectors.ant("/api/**"))
                 .build();
     }
     

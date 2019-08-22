@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+
 import java.security.Principal;
 
 @RestController
@@ -29,6 +32,9 @@ public class UserController {
     
     @GetMapping("/secret")
     @PreAuthorize("#oauth2.hasScope('read')")
+    @ApiImplicitParams(
+    		@ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer <access_token>")    		  
+    		)
     public ResponseEntity<String> secret () {
     	
     	String secret = "this is secret message";
