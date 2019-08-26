@@ -43,6 +43,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     @Override
     public void configure(HttpSecurity http) throws Exception {
     	
+    	//http.authorizeRequests().antMatchers("/api/codeTables").permitAll();
+    	
     	/**
     	 * ensure the client with authorized scope to access the api
     	 */
@@ -53,6 +55,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .antMatchers(HttpMethod.PUT, ROOT_PATTERN).access("#oauth2.hasScope('write')")
                 .antMatchers(HttpMethod.DELETE, ROOT_PATTERN).access("#oauth2.hasScope('write')");
         
+        
+                
         http.csrf().disable();
     }
 

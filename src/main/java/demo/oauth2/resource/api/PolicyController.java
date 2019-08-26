@@ -12,11 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 
+/**
+ * this is the sample api policy controller used to illustrate how to return the policy information
+ * 
+ * the api/codeTables is un-protected 
+ *
+ */
 @RestController
 @RequestMapping("/api")
 public class PolicyController {
+	
     @GetMapping("/policies")
-    @PreAuthorize("#oauth2.hasScope('read')")
+    @PreAuthorize("#oauth2.hasScope("+"'read'"+")")
     @ApiImplicitParams(
     		@ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer <access_token>")    		  
     		)
@@ -31,5 +38,22 @@ public class PolicyController {
     	
     	return ResponseEntity.ok(arr);
     	
+    }
+    
+//    @ApiImplicitParams(
+//    		@ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer <access_token>")    		  
+//    		)    
+//    @PreAuthorize("#oauth2.hasScope('special')")
+    @GetMapping("/codeTables")
+    public ResponseEntity<List<String>> getCodeTable () {
+    	
+    	ArrayList<String> arr = new ArrayList<String>();
+    	arr.add("C1001");
+    	arr.add("C1002");
+    	arr.add("C1003");
+    	arr.add("C1004");
+    	arr.add("C1020");
+    	
+    	return ResponseEntity.ok(arr);
     }
 }
