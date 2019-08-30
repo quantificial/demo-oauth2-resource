@@ -25,6 +25,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         			;
         
         web.ignoring().antMatchers("/api/codeTables");
+        
+        web.ignoring().antMatchers("/api/policyPages");
         	
         
     }

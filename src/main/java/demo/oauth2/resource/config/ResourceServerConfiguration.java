@@ -24,7 +24,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableConfigurationProperties(SecurityProperties.class)
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
-    private static final String ROOT_PATTERN = "/**";
+    private static final String ROOT_PATTERN = "/api/**";
 
     private final SecurityProperties securityProperties;
 
